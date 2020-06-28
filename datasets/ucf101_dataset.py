@@ -17,7 +17,6 @@ class ucf101(Dataset):
 
         lines = open(data_list, 'r')
         self.lines = list(lines)
-
         self.rgb_prefix = rgb_prefix
         self.flow_x_prefix = flow_x_prefix
         self.flow_y_prefix = flow_y_prefix
@@ -38,9 +37,9 @@ class ucf101(Dataset):
         start_frame = int(line[1])
         label = line[2]
 
-        rgb_dir = self.rgb_prefix + sample_name
-        flow_x_dir = self.flow_x_prefix + sample_name.split('/')[1]
-        flow_y_dir = self.flow_y_prefix + sample_name.split('/')[1]
+        rgb_dir = os.path.join(self.rgb_prefix, sample_name)
+        flow_x_dir = os.path.join(self.flow_x_prefix, sample_name.split('/')[1])
+        flow_y_dir = os.path.join(self.flow_y_prefix, sample_name.split('/')[1])
 
         clip_len = self.clip_len
         rz_size = self.rz_size
@@ -53,10 +52,8 @@ class ucf101(Dataset):
 
         if self.transforms:
             sample = self.transforms(sample)
-
             sample = generate_motion_label.motion_statistics(self.motion_flag, sample)
             sample = generate_app_label.app_statistics(self.app_flag, sample)
-
 
         return sample
 
@@ -72,16 +69,10 @@ if __name__ == '__main__':
                                      ToTensor()])
     ucf101_dataset = ucf101(data_list, rgb_prefix, flow_x_prefix, flow_y_prefix,
                                     transforms=transforms)
-
-    sample_num = len(ucf101_dataset)
-    print(sample_num)
-
     dataloader = DataLoader(ucf101_dataset, batch_size=1, shuffle=True, num_workers=1)
 
-    s_time = time.time()
     for i_batch, sample_batched in enumerate(dataloader):
         print(i_batch)
-        print("load data time:", time.time() - s_time)
 
         print(sample_batched['motion_label'])
         print(sample_batched['app_label'])
@@ -90,32 +81,7 @@ if __name__ == '__main__':
         print(sample_batched['app_label'].shape)
 
 
-        print("OK")
-        s_time = time.time()
 
-
-        #show_with_pattern.show(sample_batched)
-
-
-    # for i in range(sample_num):
-    #     sample = kinetics_400[i]
-    #
-    #     print(i)
-    #
-    #
-    #     du_x_sum = sample['du']
-
-
-        # for i in range(len(cur_rgb_clip)):
-        #     rgb_img = cur_rgb_clip[i]
-        #     cv2.imshow('img', rgb_img)
-        #     cv2.waitKey()
-        #
-        #     flow_x_img = cur_flow_x_clip[i]
-        #     flow_y_img = cur_flow_y_clip[i]
-        #     flow_img = show_flow.computeImg(flow_x_img, flow_y_img)
-        #     cv2.imshow('optical flow', flow_img)
-        #     cv2.waitKey()
 
 
 
