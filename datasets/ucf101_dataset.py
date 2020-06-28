@@ -6,9 +6,9 @@ import random
 import time
 
 from torchvision import transforms
-from utils import read_clip, show_flow, generate_motion_label, show_with_pattern, generate_app_label
+from utils import read_clip
 from utils.video_transforms import RandomCrop, ToTensor
-
+from sts import generate_motion_label, generate_app_label
 
 class ucf101(Dataset):
     def __init__(self, data_list, rgb_prefix, flow_x_prefix, flow_y_prefix,
@@ -55,7 +55,6 @@ class ucf101(Dataset):
             sample = self.transforms(sample)
 
             sample = generate_motion_label.motion_statistics(self.motion_flag, sample)
-
             sample = generate_app_label.app_statistics(self.app_flag, sample)
 
 
