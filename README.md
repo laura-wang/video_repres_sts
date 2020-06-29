@@ -24,7 +24,7 @@ Given an unlabeled video clip, 14 motion statistical labels and 13 appearance st
 
 UCF101 dataset
 - Download the original UCF101 dataset from the [official website](https://www.crcv.ucf.edu/data/UCF101.php). And then extarct RGB images from videos and finally extract optical flow data using TVL1 method.
-- Or direclty download the pre-processed RGB and optical flow data of UCF101 provided by [feichtenhofer](https://github.com/feichtenhofer/twostreamfusion).
+- Or direclty download the pre-processed RGB and optical flow data of UCF101 [here](https://github.com/feichtenhofer/twostreamfusion) provided by feichtenhofer.
 
 ## Train
 
