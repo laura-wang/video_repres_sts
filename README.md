@@ -1,5 +1,5 @@
 # Self-supervised Video Reprepresentation Learning by Uncovering Spatio-temporal Statistics
-Pytroch implementation of "Self-supervised Video Reprepresentation Learning by Uncovering Spatio-temporal Statistics", an extension of our previous CVPR 2019 paper, [Self-Supervised Spatio-Temporal Representation Learning for Videos by Predicting Motion and Appearance Statistics.](http://openaccess.thecvf.com/content_CVPR_2019/html/Wang_Self-Supervised_Spatio-Temporal_Representation_Learning_for_Videos_by_Predicting_Motion_and_CVPR_2019_paper.html) 
+Pytroch implementation of "[Self-supervised Video Reprepresentation Learning by Uncovering Spatio-temporal Statistics](https://arxiv.org/pdf/2008.13426.pdf)", an extension of our previous CVPR 2019 paper, [Self-Supervised Spatio-Temporal Representation Learning for Videos by Predicting Motion and Appearance Statistics.](http://openaccess.thecvf.com/content_CVPR_2019/html/Wang_Self-Supervised_Spatio-Temporal_Representation_Learning_for_Videos_by_Predicting_Motion_and_CVPR_2019_paper.html) 
 
 Tensorflow implementation https://github.com/laura-wang/video_repres_mas.
 
